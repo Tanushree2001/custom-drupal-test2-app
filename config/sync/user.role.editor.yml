@@ -1,0 +1,18 @@
+uuid: 009ca649-ad5c-437f-b9dc-64bb02dd7b3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news
+  module:
+    - node
+id: editor
+label: Editor
+weight: 5
+is_admin: null
+permissions:
+  - 'administer nodes'
+  - 'delete any news content'
+  - 'edit any news content'
+  - 'view all revisions'
+  - 'view own unpublished content'
