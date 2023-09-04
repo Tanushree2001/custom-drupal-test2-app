@@ -1,0 +1,30 @@
+<?php
+use Drupal\Core\Form\FormStateInterface;
+/**
+ * Implements hook_form_FORM_ID_alter() for the News content type form.
+ */
+function custom_duplicate_prevention_form_node_news_form_alter(&$form, FormStateInterface $form_state) {
+  $form['#validate'][] = 'custom_duplicate_prevention_validate_news';
+}
+
+/**
+ * Custom validation callback to prevent duplicate News content.
+ */
+function custom_duplicate_prevention_validate_news($form, FormStateInterface $form_state) {
+  // Extract the submitted values from the form.
+  $title = $form_state->getValue('title');
+  $tags = $form_state->getValue('field_tags'); // Replace with the actual field name.
+
+  // Query the database to check for similar News content.
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'news'); // Use the machine name of the News content type.
+  $query->condition('title', $title);
+  $query->condition('field_tags', $tags);
+
+  $count = $query->count()->execute();
+
+  // If similar News content already exists, show an error message.
+  if ($count > 0) {
+    $form_state->setErrorByName('title', 'Similar News content with the same title and tags already exists.');
+  }
+}
