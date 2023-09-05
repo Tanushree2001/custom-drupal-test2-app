@@ -1,0 +1,29 @@
+uuid: 986e0cac-2e87-4337-9778-99f1b036d88e
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.news_category
+  module:
+    - system
+    - views
+  theme:
+    - bootstrap
+id: views_block__news_category_block_2
+theme: bootstrap
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:news_category-block_2'
+settings:
+  id: 'views_block:news_category-block_2'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node

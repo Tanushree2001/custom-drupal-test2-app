@@ -1,0 +1,23 @@
+uuid: 6386b136-ee13-403f-a4df-3592cb1de9cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_view_count
+    - node.type.news
+id: node.news.field_view_count
+field_name: field_view_count
+entity_type: node
+bundle: news
+label: 'View Count'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

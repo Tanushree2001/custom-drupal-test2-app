@@ -1,0 +1,30 @@
+uuid: 84db7ccd-ab14-4fd4-96f0-d5f7aaa4c484
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:db333c29-43a8-496a-94f2-8c2a70fa5e6d'
+  module:
+    - block_content
+    - system
+  theme:
+    - bootstrap
+id: copyright
+theme: bootstrap
+region: footer
+weight: -7
+provider: null
+plugin: 'block_content:db333c29-43a8-496a-94f2-8c2a70fa5e6d'
+settings:
+  id: 'block_content:db333c29-43a8-496a-94f2-8c2a70fa5e6d'
+  label: Copyright
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node

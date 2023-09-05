@@ -1,0 +1,7 @@
+name: 'View Count'
+type: module
+description: 'Increments the view count for each anonymous user'
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies: 
+  -drupal:node

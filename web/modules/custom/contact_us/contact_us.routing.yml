@@ -1,0 +1,7 @@
+contact_us.diform:
+  path: '/contactusform'
+  defaults:
+    _form: '\Drupal\contact_us\Form\ContactUs'
+    _title: 'Contact'
+  requirements:
+    _permission: 'access content'

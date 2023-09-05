@@ -1,0 +1,6 @@
+name: 'Login Dashboard'
+type: module
+description: 'Redirect users to specific dashboards after login.'
+core_version_requirement: ^9 || ^10
+package: Custom
+

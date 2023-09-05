@@ -1,0 +1,25 @@
+uuid: 009ca649-ad5c-437f-b9dc-64bb02dd7b3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news
+  module:
+    - field_permissions
+    - node
+    - system
+id: editor
+label: Editor
+weight: 5
+is_admin: null
+permissions:
+  - 'access private fields'
+  - 'administer field permissions'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'create field_featured'
+  - 'delete any news content'
+  - 'edit any news content'
+  - 'edit own field_featured'
+  - 'view all revisions'
+  - 'view own unpublished content'
