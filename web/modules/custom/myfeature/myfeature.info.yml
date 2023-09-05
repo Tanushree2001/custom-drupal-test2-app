@@ -1,0 +1,5 @@
+name: 'My Features'
+type: module
+description: 'Remove 7 days before features'
+core_version_requirement: ^9 || ^10
+package: Custom

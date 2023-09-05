@@ -1,0 +1,68 @@
+<?php
+
+// /**
+// * Implements hook_cron().
+// */
+// function myfeature_cron() {
+//   $time_limit = strtotime('-7 days');
+//   $query = \Drupal::entityQuery('node')
+//     ->condition('type', 'news')
+//     ->condition('field_featured', 1)
+//     ->condition('changed', $time_limit, '<');
+//   $nids = $query->execute();
+//   if(!empty($nids)) {
+//     $storage_handler = \Drupal::entityTypeManager()->getStorage("node");
+//     $nodes = $storage_handler->loadMultiple($nids);
+//     foreach ($nodes as $node) {
+//       // $node->set('field_featured', 0);
+//       $node->save();
+//     }    
+//   }
+//   // foreach ($nids as $row) {
+//   //   $node = \Drupal\node\Entity\Node::load($row->nid);
+//   //   if($node) {
+//   //     $node->delete();
+//   //   }
+//   // }
+// }
+
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Datetime\DateFormatterInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+class myfeature {
+  protected $entityTypeManager;
+  protected $dateFormatter;
+
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, DateFormatterInterface $date_formatter) {
+    $this->entityTypeManager = $entity_type_manager;
+    $this->dateFormatter = $date_formatter;
+  }
+
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity_type.manager'),
+      $container->get('date.formatter')
+    );
+  }
+
+  /**
+  * Implements hook_cron().
+  */
+  public function myfeature_cron() {
+    $time_limit = $this->dateFormatter->format(strtotime('-7 days'), 'custom', 'Y-m-d');
+    $query = $this->entityTypeManager->getStorage('node')->getQuery()
+      ->condition('type', 'news')
+      ->condition('field_featured', TRUE)
+      ->condition('changed', $time_limit, '<');
+    $nids = $query->execute();
+
+    if ($nids) {
+      $news_nodes = $this->entityTypeManager->getStorage('node')->loadMultiple($nids);
+      foreach ($news_nodes as $node) {
+        $node->set('field_featured', FALSE);
+        $node->save();
+      }
+    }
+  }
+}

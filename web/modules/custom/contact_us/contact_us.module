@@ -1,0 +1,17 @@
+<?php
+/**
+ * Implements hook_mail().
+ */
+function contact_us_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'contact_form_submission_admin':
+      $message['subject'] = 'New contact form query';
+      $message['body'][] = $params['message'];
+      break;
+
+    case 'contact_form_submission_user':
+      $message['subject'] = 'Thank you for contacting us';
+      $message['body'][] = $params['message'];
+      break;
+  }
+}

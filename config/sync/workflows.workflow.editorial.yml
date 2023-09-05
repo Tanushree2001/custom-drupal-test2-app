@@ -35,12 +35,6 @@ type_settings:
         - review
       to: published
       weight: 3
-    after_reporter_submits_the_content_for_review:
-      label: 'After reporter submits the content for review'
-      from:
-        - draft
-      to: review
-      weight: 2
     create_new_draft:
       label: 'Create New Draft'
       from:
@@ -55,6 +49,12 @@ type_settings:
         - published
       to: published
       weight: 1
+    reporter_submits_the_content_for_review:
+      label: 'reporter submits the content for review'
+      from:
+        - draft
+      to: review
+      weight: 4
   entity_types:
     node:
       - news

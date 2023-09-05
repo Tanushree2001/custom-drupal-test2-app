@@ -13,7 +13,7 @@ module:
   contact_us: 0
   content_moderation: 0
   contextual: 0
-  custom_duplicate: 0
+  custom_news_api: 0
   datetime: 0
   dblog: 0
   devel: 0
@@ -29,8 +29,10 @@ module:
   history: 0
   image: 0
   link: 0
+  login_dashboard: 0
   menu_link_content: 0
   menu_ui: 0
+  myfeature: 0
   mysql: 0
   node: 0
   options: 0

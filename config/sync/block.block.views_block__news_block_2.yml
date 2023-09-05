@@ -1,4 +1,4 @@
-uuid: cab57155-f4c1-420a-945f-98c4131d4622
+uuid: a530f232-0285-43de-9f30-9f4d25c43f4f
 langcode: en
 status: true
 dependencies:
@@ -9,14 +9,14 @@ dependencies:
     - views
   theme:
     - bootstrap
-id: views_block__news_block_1
+id: views_block__news_block_2
 theme: bootstrap
 region: content
-weight: -6
+weight: -8
 provider: null
-plugin: 'views_block:news-block_1'
+plugin: 'views_block:news-block_2'
 settings:
-  id: 'views_block:news-block_1'
+  id: 'views_block:news-block_2'
   label: ''
   label_display: visible
   provider: views
@@ -26,4 +26,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: /news
+    pages: /node

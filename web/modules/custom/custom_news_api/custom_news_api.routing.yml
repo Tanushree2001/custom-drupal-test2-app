@@ -1,0 +1,8 @@
+custom_news_api.list_blogs:
+  path: '/api/news'
+  defaults:
+    _controller: '\Drupal\custom_news_api\Controller\NewsApiController::listBlogs'
+    _title: 'News Blogs API'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'

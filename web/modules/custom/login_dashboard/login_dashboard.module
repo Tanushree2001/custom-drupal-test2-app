@@ -1,14 +1,19 @@
 <?php
-// use Symfony\Component\HttpFoundation\RedirectResponse;
-// use Drupal\Core\Url;
-// /**
-//  * Implements hook_user_login().
-//  */
-// function login_dashboard_user_login(&$edit, $account) {
-//   if (in_array('reporter', $account->getRoles())) {
-//     $path = 'reporter-dashboard';
-//     $url = Url::fromUserInput($path)->toString();
-//     $response = new RedirectResponse($url);
-//     $response->send();
-//   }    
-// }
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Url;
+/**
+ * Implements hook_user_login().
+ */
+function login_dashboard_user_login($account) {
+  if (in_array('Reporter', $account->getRoles())) {
+    $path = '/reporter-dashboard';
+    $url = Url::fromUserInput($path)->toString();
+    $response = new RedirectResponse($url);
+    $response->send();
+  } elseif (in_array('Editor', $account->getRoles())) {
+    $path = '/editor-dashboard';
+    $url = Url::fromUserInput($path)->toString();
+    $response = new RedirectResponse($url);
+    $response->send();
+  }
+}

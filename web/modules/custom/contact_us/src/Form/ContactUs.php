@@ -142,7 +142,23 @@ class ContactUs extends FormBase {
   {
     
     $this->messenger->addMessage('It is done');
+    
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    $module = 'contact_us';
+    $key = 'contact_form_submission_admin';
+    $to = \Drupal::config('system.site')->get('tanushree.gupta@innoraft.com');
+    $params['message'] = "A new contact form submission has been made by " . $form_state->getValue('fullname');
+    $params['fullname'] = $form_state->getValue('fullname');
+    $langcode = \Drupal::currentUser()->getPreferredLangcode();
+    $send = TRUE;
 
+    $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+
+    $key = 'contact_form_submission_user';
+    $to = $form_state->getValue('email'); 
+    $params['message'] = "Thank you for your message. We will get back to you soon.";
+
+    $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
     
   }
 }
